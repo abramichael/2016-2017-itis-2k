@@ -1,0 +1,34 @@
+-- взять год от текущей даты
+date_part("year", current_timestamp)
+
+-- добавить fk 
+alter table students
+add constraint students_group_id_fk
+foreign key(group_id) references groups(id);
+
+-- пример update с несколькими присваиваниями
+update students
+set group_id = 2, year = 1997
+where name = 'Mark';
+
+-- пример delete с вложенным запросом
+delete from groups
+where not exists(select * from students where group_id = groups.id);
+
+-- добавить fk с правилом при удалении
+alter table students
+add constraint students_group_id_fk
+foreign key(group_id) references groups(id)
+on delete cascade;
+
+-- виды правил on update, on delete
+-- restrict, set null, set default, cascade
+
+-- добавление новой колонки
+alter table students
+add column course_work varchar(100);
+
+-- добавление ограничения уникальности
+alter table students
+add constraint students_course_work_unique
+unique(course_work);

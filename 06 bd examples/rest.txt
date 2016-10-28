@@ -1,0 +1,13 @@
+4 ГЛАВНЫЕ ОПЕРАЦИИ:
+
+CREATE, READ,   UPDATE, DELETE (CRUD)
+POST,   GET,    PUT,    DELETE (HTTP Methods)
+INSERT, SELECT, UPDATE, DELETE (SQL)
+
+REST: REPRESENTING STATE TRANSFER
+=================================
+GET /books  
+POST /books
+GET /books/1	 ИЛИ	/?entity=book&id=1
+POST /books/1
+DELETE /books/1    POST /books/1/delete
