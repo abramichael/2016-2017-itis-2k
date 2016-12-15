@@ -1,0 +1,30 @@
+<project name="mywebapp" default="deploy">
+
+	<property file="build.properties"/>
+	<path id="servlet-classpath">
+		<fileset dir="${tomcat.dir}/lib">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+
+	<target name="init">
+		<delete dir="${builddir}"/>
+		<mkdir dir="${builddir}"/>
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="src" destdir="${builddir}">
+			<classpath refid="servlet-classpath"/>
+		</javac>
+	</target>
+
+	<target name="deploy" depends="compile">
+		<mkdir dir="${tomcat.dir}/webapps/webapp1"/>
+		<copy todir="${tomcat.dir}/webapps/webapp1">
+			<fileset dir="web"/>
+		</copy>
+		<copy todir="${tomcat.dir}/webapps/webapp1/WEB-INF/classes">
+			<fileset dir="${builddir}"/>
+		</copy>
+	</target>
+</project>
