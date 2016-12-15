@@ -1,0 +1,37 @@
+<project name="HelloString" default="all">
+
+<property name="out.dir" value="out"/>
+<property name="class.dir" value="${out.dir}/classes"/>
+
+<target name="all" depends="toJar">
+	<echo>end of the build</echo>
+</target>
+
+<target name="toJar" depends="compile">
+	<jar destfile="hello.jar">
+		<fileset dir="${class.dir}">
+			<include name="**/*.class"/>
+		</fileset>
+		<manifest>
+			<attribute name="Main-Class" value="ru.kai.Main"/>
+		</manifest>
+	</jar>
+</target>
+
+<target name="makeDirs" depends="clean">
+	<echo>Creating dirs</echo>
+	<mkdir dir="${out.dir}"/>
+	<mkdir dir="${class.dir}"/>
+</target>
+
+<target name="clean">
+	<delete dir="${out.dir}"/>
+</target>
+
+<target name="compile" depends="makeDirs">
+	<javac destdir="${class.dir}">
+		<src path="src"/>
+	</javac>
+</target>
+
+</project>
