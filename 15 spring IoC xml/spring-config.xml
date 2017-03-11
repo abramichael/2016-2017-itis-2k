@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="player" class="ru.kpfu.itis.group501.game.Player">
+        <property name="name" value="Oleg"/>
+    </bean>
+
+    <bean id="player2" class="ru.kpfu.itis.group501.game.Player">
+        <property name="name" value="Kolyamir"/>
+    </bean>
+
+    <!--bean id="enemy" class="ru.kpfu.itis.group501.game.Enemy"
+        scope="prototype">
+    </bean-->
+
+    <bean id="game" class="ru.kpfu.itis.group501.game.Game" init-method="init">
+        <constructor-arg ref="player" />
+        <!--property name="enemy1" ref="enemy"/>
+        <property name="enemy2" ref="enemy"/-->
+        <property name="enemyCreator" ref="enemyCreator"/>
+    </bean>
+
+    <bean id="enemyCreator" class="ru.kpfu.itis.group501.game.EnemyCreator"/>
+
+</beans>
