@@ -3,6 +3,8 @@
  */
 public class Student {
     private int year;
+    private String name;
+    // + все необходимые get-set и конструкторы
 
     public int getYear() {
         return year;
@@ -20,7 +22,7 @@ public class Student {
         this.name = name;
     }
 
-    private String name;
+
 
     @Override
     public String toString() {
